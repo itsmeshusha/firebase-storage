@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Header} from "./components/Header/Header";
+import {LinearProgress} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./redux/store";
+import {isLoaded} from "react-redux-firebase";
+import {UploadFile} from "./components/UploadFile/UploadFile";
+import {PhotosPage} from "./components/PhotosPage/PhotosPage";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    // @ts-ignore
+    function AuthIsLoaded({children}) {
+        const auth = useSelector<AppRootStateType>(state => state.firebase.auth)
+        if (!isLoaded(auth)) return <LinearProgress className="linearProgress" color={"primary"}/>;
+        return children
+    }
+
+    return (
+        <AuthIsLoaded>
+            <div className="App">
+                <Header/>
+                <UploadFile />
+                <PhotosPage />
+            </div>
+        </AuthIsLoaded>
+    );
 }
 
 export default App;

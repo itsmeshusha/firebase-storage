@@ -1,0 +1,16 @@
+.header {
+    height: 80px;
+    background-color: #708d7c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+}
+.item {
+
+}
