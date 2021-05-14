@@ -1,32 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect,  useState} from 'react';
 import firebase from "firebase";
 import s from './PhotosPage.module.css'
+import {useDispatch, useSelector} from "react-redux";
+import {getPhotosThunk} from "../../redux/photos-reducer";
+import {AppRootStateType} from "../../redux/store";
 
 export const PhotosPage = () => {
 
     const [images, setImages] = useState<Array<any>>([])
 
+    const photos = useSelector<AppRootStateType, Array<string>>(state => state.photos.photos)
     const storageRef = firebase.storage().ref("images");
-
+    const dispatch = useDispatch()
 
     useEffect(() => {
-
-        const result = storageRef.listAll()
-            .then(async res => {
-                let newArr = [...images]
-                let arr = await Promise.all(res.items.map(i => i.getDownloadURL()))
-
-                console.log(arr)
-                setImages(arr)
-
-            })
+            dispatch(getPhotosThunk())
 
     }, []);
 
     console.log(images)
     return <div className={s.mainBlock}>
         <div className={s.item}>
-            {images.map(el => <img src={el} key={el}/>)}
+            {photos.map(el => <img src={el} key={el}/>)}
         </div>
     </div>
 }
