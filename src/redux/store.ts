@@ -4,7 +4,6 @@ import {firebaseReducer} from "react-redux-firebase";
 import {firestoreReducer} from "redux-firestore";
 import {authReducer} from "./auth-reducer";
 import {appReducer} from "./app-reducer";
-import {uploadFileReducer} from "./uploadFile-reducer";
 import { getFirebase } from 'react-redux-firebase'
 import {photosReducer} from "./photos-reducer";
 
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
     firestore: firestoreReducer,
     auth: authReducer,
     app: appReducer,
-    upload: uploadFileReducer,
     photos: photosReducer,
 })
 

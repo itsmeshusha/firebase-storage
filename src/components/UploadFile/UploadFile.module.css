@@ -4,11 +4,16 @@
 }
 
 .item {
+    padding-top: 10px;
+    padding-bottom: 10px;
 
 }
-.item img {
-    flex: auto;
-    height: 250px;
-    min-width: 150px;
-    margin: 0 8px 8px 0;
+
+.btn {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 7px;
+    background-color: white;
+    font-size: 13px;
+
 }

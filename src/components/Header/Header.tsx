@@ -4,6 +4,7 @@ import {Signin} from "./Signin/Signin";
 import {useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import {Signout} from "./Signout/Signout";
+import {UploadFile} from "../UploadFile/UploadFile";
 
 export const Header = () => {
     const auth = useSelector((state: AppRootStateType) => state.firebase.auth)
@@ -17,6 +18,7 @@ export const Header = () => {
                 <Signin/>
             </div>
         }
+        <UploadFile />
 
     </div>
 }

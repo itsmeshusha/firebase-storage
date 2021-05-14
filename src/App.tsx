@@ -22,7 +22,6 @@ function App() {
         <AuthIsLoaded>
             <div className="App">
                 <Header/>
-                <UploadFile />
                 <PhotosPage />
             </div>
         </AuthIsLoaded>
