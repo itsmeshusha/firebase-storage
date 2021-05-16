@@ -7,24 +7,28 @@ import {AppRootStateType} from "./redux/store";
 import {isLoaded} from "react-redux-firebase";
 import {UploadFile} from "./components/UploadFile/UploadFile";
 import {PhotosPage} from "./components/PhotosPage/PhotosPage";
+import {RequestStatusType} from "./redux/app-reducer";
 
 
 function App() {
 
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status)
     // @ts-ignore
-    function AuthIsLoaded({children}) {
-        const auth = useSelector<AppRootStateType>(state => state.firebase.auth)
-        if (!isLoaded(auth)) return <LinearProgress className="linearProgress" color={"primary"}/>;
-        return children
-    }
+    // function AuthIsLoaded({children}) {
+    //     const auth = useSelector<AppRootStateType>(state => state.firebase.auth)
+    //     if (!isLoaded(auth)) return <LinearProgress className="linearProgress" color={"primary"}/>;
+    //     return children
+    // }
 
     return (
-        <AuthIsLoaded>
+        // <AuthIsLoaded>
+
             <div className="App">
+                {status === 'loading' && <LinearProgress className="linearProgress" color={"primary"}/>}
                 <Header/>
                 <PhotosPage />
             </div>
-        </AuthIsLoaded>
+        // </AuthIsLoaded>
     );
 }
 

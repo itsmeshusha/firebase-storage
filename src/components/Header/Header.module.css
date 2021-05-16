@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .btn {
     border: 2px solid #ccc;
@@ -12,5 +13,5 @@
     background-color: white;
 }
 .item {
-
+    padding: 5px;
 }

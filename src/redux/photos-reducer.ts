@@ -58,9 +58,9 @@ export const uploadPhotoTC = (photo: any) => async (dispatch: Dispatch, getState
         let arr = await Promise.all(res.items.map((i: any) => i.getDownloadURL()))
         console.log(arr)
         dispatch(uploadPhotoAC(photo))
-        dispatch(setStatusAC('succeeded'))
         //@ts-ignore
         dispatch(setPhotosAC(arr))
+        dispatch(setStatusAC('succeeded'))
 
     })
 }
