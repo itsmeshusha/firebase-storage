@@ -42,8 +42,7 @@ type ActionsType = ReturnType<typeof setPhotosAC | typeof uploadPhotoAC>
 export const getPhotosThunk = () => async (dispatch: Dispatch, getState: () => AppRootStateType, getFirebase: any) => {
     dispatch(setStatusAC('loading'))
     return getFirebase().storage().ref('images').listAll().then(async (res: any) => {
-            let arr = await Promise.all(res.items.map((i: any) => i.getDownloadURL()))
-        console.log(arr)
+        let arr = await Promise.all(res.items.map((i: any) => i.getDownloadURL()))
         //@ts-ignore
         dispatch(setPhotosAC(arr))
         dispatch(setStatusAC('succeeded'))
@@ -56,7 +55,6 @@ export const uploadPhotoTC = (photo: any) => async (dispatch: Dispatch, getState
     dispatch(setStatusAC('loading'))
     return getFirebase().storage().ref('images').listAll().then(async (res: any) => {
         let arr = await Promise.all(res.items.map((i: any) => i.getDownloadURL()))
-        console.log(arr)
         dispatch(uploadPhotoAC(photo))
         //@ts-ignore
         dispatch(setPhotosAC(arr))

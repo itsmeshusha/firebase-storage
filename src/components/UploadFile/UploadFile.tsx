@@ -3,6 +3,7 @@ import {storage} from "../../index";
 import s from './UploadFile.module.css'
 import {uploadPhotoTC} from "../../redux/photos-reducer";
 import {useDispatch} from "react-redux";
+import {setStatusAC} from "../../redux/app-reducer";
 
 export const UploadFile = () => {
 
@@ -17,6 +18,7 @@ export const UploadFile = () => {
     }
 
     const handleUpload = (image:any) => {
+        dispatch(setStatusAC("loading"))
         // @ts-ignore
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on(
