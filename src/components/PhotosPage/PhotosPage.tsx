@@ -16,7 +16,6 @@ export const PhotosPage = () => {
 
     }, []);
 
-    console.log(images)
     return <div className={s.mainBlock}>
         <div className={s.item}>
             {photos.map(el => <img src={el} key={el}/>)}

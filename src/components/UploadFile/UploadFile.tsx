@@ -10,35 +10,71 @@ export const UploadFile = () => {
     const [url, setUrl] = useState("")
     const dispatch = useDispatch()
 
+    // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    //     if(e.target.files && e.target.files[0]) {
+    //         // @ts-ignore
+    //         handleUpload(e.target.files[0])
+    //     }
+    // }
+    //
+    // const handleUpload = (image:any) => {
+    //     dispatch(setStatusAC("loading"))
+    //     console.log(image)
+    //     // @ts-ignore
+    //     const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    //     uploadTask.on(
+    //         'state_changed',
+    //         snapshot => {},
+    //         error => {
+    //             console.log(error)
+    //         },
+    //         () => {
+    //             storage
+    //                 .ref('images')
+    //                 // @ts-ignore
+    //                 .child(image.name)
+    //                 .getDownloadURL()
+    //                 .then(url => {
+    //                     setUrl(url)
+    //                     dispatch(uploadPhotoTC(image))
+    //                 })
+    //         }
+    //     )
+    //
+    // }
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if(e.target.files && e.target.files[0]) {
-            // @ts-ignore
-            handleUpload(e.target.files[0])
+        if(e.target.files) {
+            handleUpload(e.target.files)
         }
     }
 
     const handleUpload = (image:any) => {
-        dispatch(setStatusAC("loading"))
-        // @ts-ignore
-        const uploadTask = storage.ref(`images/${image.name}`).put(image);
-        uploadTask.on(
-            'state_changed',
-            snapshot => {},
-            error => {
-                console.log(error)
-            },
-            () => {
-                storage
-                    .ref('images')
-                    // @ts-ignore
-                    .child(image.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        setUrl(url)
-                        dispatch(uploadPhotoTC(image))
-                    })
-            }
-        )
+        let arrFile = [...image]
+
+        arrFile.forEach((el:any) => {
+            dispatch(setStatusAC("loading"))
+
+            const uploadTask = storage.ref(`images/${el.name}`).put(el);
+            uploadTask.on(
+                'state_changed',
+                snapshot => {},
+                error => {
+                    console.log(error)
+                },
+                () => {
+                    storage
+                        .ref('images')
+                        // @ts-ignore
+                        .child(el.name)
+                        .getDownloadURL()
+                        .then(url => {
+                            setUrl(url)
+                            dispatch(uploadPhotoTC(el))
+                        })
+                }
+            )
+        })
 
     }
 
