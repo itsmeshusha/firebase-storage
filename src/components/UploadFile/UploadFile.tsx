@@ -44,21 +44,26 @@ export const UploadFile = () => {
     // }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if(e.target.files) {
+        if (e.target.files) {
             handleUpload(e.target.files)
         }
     }
 
-    const handleUpload = (image:any) => {
+    const handleUpload = (image: any) => {
         let arrFile = [...image]
+        let count = 0
 
-        arrFile.forEach((el:any) => {
+
+        arrFile.forEach((el: any) => {
+            debugger
             dispatch(setStatusAC("loading"))
 
-            const uploadTask = storage.ref(`images/${el.name}`).put(el);
+            const uploadTask = storage.ref(`images/${el.name}`).put(el)
+
             uploadTask.on(
                 'state_changed',
-                snapshot => {},
+                snapshot => {
+                },
                 error => {
                     console.log(error)
                 },
@@ -69,12 +74,22 @@ export const UploadFile = () => {
                         .child(el.name)
                         .getDownloadURL()
                         .then(url => {
+                            debugger
                             setUrl(url)
+                            dispatch(setStatusAC("succeeded"))
+                            count = count + 1
+
+                            if (arrFile.length > count) {
+                                dispatch(setStatusAC("loading"))
+                            }
+
                             dispatch(uploadPhotoTC(el))
                         })
                 }
             )
+
         })
+
 
     }
 
@@ -84,7 +99,7 @@ export const UploadFile = () => {
         <div className={s.item}>
             <label>
                 <input type={'file'} style={{display: 'none'}} multiple onChange={handleChange}/>
-                <span className={s.btn} >Upload</span>
+                <span className={s.btn}>Upload</span>
             </label>
 
         </div>
