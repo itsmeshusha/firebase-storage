@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/firebase-storage/static/css/main.6f47def9.chunk.css",
+    "main.js": "/firebase-storage/static/js/main.4ba7e0bf.chunk.js",
+    "main.js.map": "/firebase-storage/static/js/main.4ba7e0bf.chunk.js.map",
+    "runtime-main.js": "/firebase-storage/static/js/runtime-main.4e1fea99.js",
+    "runtime-main.js.map": "/firebase-storage/static/js/runtime-main.4e1fea99.js.map",
+    "static/js/2.c249387e.chunk.js": "/firebase-storage/static/js/2.c249387e.chunk.js",
+    "static/js/2.c249387e.chunk.js.map": "/firebase-storage/static/js/2.c249387e.chunk.js.map",
+    "static/js/3.a4fffb32.chunk.js": "/firebase-storage/static/js/3.a4fffb32.chunk.js",
+    "static/js/3.a4fffb32.chunk.js.map": "/firebase-storage/static/js/3.a4fffb32.chunk.js.map",
+    "index.html": "/firebase-storage/index.html",
+    "static/css/main.6f47def9.chunk.css.map": "/firebase-storage/static/css/main.6f47def9.chunk.css.map",
+    "static/js/2.c249387e.chunk.js.LICENSE.txt": "/firebase-storage/static/js/2.c249387e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e1fea99.js",
+    "static/js/2.c249387e.chunk.js",
+    "static/css/main.6f47def9.chunk.css",
+    "static/js/main.4ba7e0bf.chunk.js"
+  ]
+}
