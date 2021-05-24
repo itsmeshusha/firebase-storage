@@ -14,17 +14,26 @@ export const Header = () => {
 
     return <div className={s.header}>
         {status === 'loading' && <LinearProgress className="linearProgress" color={"primary"}/>}
+        <div className={s.item}>
+            <UploadFile/>
+        </div>
         {auth && auth.uid
-            ? <div className={s.item}>
-                <Signout />
+            ? <div className={s.wrapper}>
+                <div className={s.item}>
+                    <Signout/>
+                    <div className={s.item}>
+                        <div className={s.text}>{auth.displayName}</div>
+                    </div>
+                    <div className={s.item}>
+                        {/*@ts-ignore*/}
+                        <img src={auth.photoURL} alt={'photo'}/>
+                    </div>
+                </div>
             </div>
             : <div className={s.item}>
                 <Signin/>
             </div>
         }
-        <div className={s.item}>
-            <UploadFile />
-        </div>
 
 
     </div>
