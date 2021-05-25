@@ -29,38 +29,19 @@ firebase.initializeApp({
 firebase.firestore();
 firebase.firestore().enablePersistence();
 
-
-
-const initialState = {};
-
 export const storage = firebase.storage()
 export const database = firebase.firestore()
 
 
-
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         const currentUser = firebase.auth().currentUser
-        console.log(currentUser)
     } else {
         console.log('No user is signed in')
     }
 })
 
 export const currentUser = firebase.auth().currentUser
-console.log(currentUser)
-
-// console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
-// firebase.auth().getRedirectResult().then(result => {
-//     let user = result.user;
-//
-//     database.collection('users').doc(firebase?.auth()?.currentUser?.uid)
-//         .set({
-//             email: user?.email,
-//             name: user?.displayName
-//         })
-//
-// })
 
 const rrfProps = {
     firebase,
