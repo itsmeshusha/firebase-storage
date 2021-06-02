@@ -21,9 +21,6 @@ export const Header = () => {
             ? <div className={s.wrapper}>
                 <div className={s.item}>
                     <Signout/>
-                    {/*<div className={s.item}>*/}
-                    {/*    <div className={s.text}>{auth.displayName}</div>*/}
-                    {/*</div>*/}
                     <div className={s.item}>
                         {/*@ts-ignore*/}
                         <img src={auth.photoURL} alt={'photo'}/>
